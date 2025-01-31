@@ -27,3 +27,4 @@ Instead of writing detailed Terraform or CloudFormation scripts for each specifi
 
 ### Setup your server localy - [Server Guide](./server/README.md) (optional)
 
+![image](https://github.com/user-attachments/assets/79255c9d-5d3c-4f14-b4e6-4208d5d8d02d)
