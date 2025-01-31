@@ -17,8 +17,8 @@ services:
       timeout: 5s
       retries: 5
 
-  service:
-    build: service
+  server:
+    build: server
     env_file:
       - .env
     ports:
