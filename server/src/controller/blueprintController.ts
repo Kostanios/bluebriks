@@ -27,7 +27,7 @@ export default async function blueprintsController(fastify: FastifyInstance) {
   });
 
   // GET /api/v1/blueprint:id
-  fastify.get("/", async (request, reply: FastifyReply) => {
+  fastify.get("/:id", async (request, reply: FastifyReply) => {
     try {
       const blueprints = await GetBlueprintById(
         request as FastifyRequest<{ Params: GetBlueprintByIdQuery }>,
@@ -53,7 +53,7 @@ export default async function blueprintsController(fastify: FastifyInstance) {
   });
 
   // PUT /api/v1/blueprint:id
-  fastify.put("/", async (request, reply: FastifyReply) => {
+  fastify.put("/:id", async (request, reply: FastifyReply) => {
     try {
       const blueprint = await UpdateBlueprintById(
         request as FastifyRequest<{
@@ -69,7 +69,7 @@ export default async function blueprintsController(fastify: FastifyInstance) {
   });
 
   // DELETE /api/v1/blueprint:id
-  fastify.delete("/", async (request, reply: FastifyReply) => {
+  fastify.delete("/:id", async (request, reply: FastifyReply) => {
     try {
       const blueprint = await DeleteBlueprintById(
         request as FastifyRequest<{
