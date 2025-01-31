@@ -1,6 +1,6 @@
 {
   "name": "fastify-typescript-starter",
-  "version": "4.1.0",
+  "version": "2.0.0",
   "description": "Fastify TypeScript starter repository",
   "scripts": {
     "watch": "tsc --watch --preserveWatchOutput --pretty",

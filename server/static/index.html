@@ -1,41 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Fastify + Typescript App</title>
-    <style>
-      body {
-        font-family: Georgia, "Times New Roman", Times, serif;
-      }
-    </style>
-  </head>
-  <body>
-    <h1>Welcome to Fastify + Typescript App 🔥</h1>
-    <h2>API Documentation</h2>
-    <div id="app"></div>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blueprints API Documentation</title>
+  <style>
+    body { font-family: Arial, sans-serif; line-height: 1.6; }
+    h1 { color: #333; }
+    .endpoint { border: 1px solid #ddd; padding: 10px; margin: 10px 0; }
+    .method { font-weight: bold; color: white; padding: 5px; }
+    .get { background-color: green; }
+    .post { background-color: blue; }
+    .put { background-color: orange; }
+    .delete { background-color: red; }
+  </style>
+</head>
+<body>
+<h1>Blueprints API Documentation</h1>
 
-    <script>
-      let html = "";
-      const routes = [
-        {
-          name: "User API",
-          path: "/api/v1/user",
-        },
-      ];
+<div class="endpoint">
+  <span class="method get">GET</span>
+  <strong>/api/v1/blueprint</strong>
+  <p>Retrieve a list of all blueprints.</p>
+</div>
 
-      async function initApp() {
-        for (const route of routes) {
-          const response = await fetch(route.path);
-          const json = await response.json();
-          html += `<h3>${route.name}</h3>
-                    <a href="${route.path}">${route.path}</a>
-                    <pre>${JSON.stringify(json)}</pre>`;
-        }
-        document.getElementById("app").innerHTML = html;
-      }
+<div class="endpoint">
+  <span class="method get">GET</span>
+  <strong>/api/v1/blueprint/:id</strong>
+  <p>Retrieve a specific blueprint by its ID.</p>
+  <p><strong>Path Parameters:</strong></p>
+  <ul>
+    <li><strong>id</strong> (string) - The ID of the blueprint.</li>
+  </ul>
+</div>
 
-      initApp();
-    </script>
-  </body>
+<div class="endpoint">
+  <span class="method post">POST</span>
+  <strong>/api/v1/blueprint</strong>
+  <p>Create a new blueprint.</p>
+  <p><strong>Request Body:</strong></p>
+  <pre>{ "name": "string", "version": "string", "author": "string", "blueprint_data": "object" }</pre>
+</div>
+
+<div class="endpoint">
+  <span class="method put">PUT</span>
+  <strong>/api/v1/blueprint/:id</strong>
+  <p>Update an existing blueprint by its ID.</p>
+  <p><strong>Path Parameters:</strong></p>
+  <ul>
+    <li><strong>id</strong> (string) - The ID of the blueprint.</li>
+  </ul>
+  <p><strong>Request Body:</strong> (Partial Update)</p>
+  <pre>{ "name": "string", "version": "string", "author": "string", "blueprint_data": "object" }</pre>
+</div>
+
+<div class="endpoint">
+  <span class="method delete">DELETE</span>
+  <strong>/api/v1/blueprint/:id</strong>
+  <p>Delete a blueprint by its ID.</p>
+  <p><strong>Path Parameters:</strong></p>
+  <ul>
+    <li><strong>id</strong> (string) - The ID of the blueprint.</li>
+  </ul>
+</div>
+</body>
 </html>
