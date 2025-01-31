@@ -49,7 +49,7 @@ export const CreateBlueprint = (
     handleQueryError(new Error("Missing required fields"), "CreateBlueprint");
   }
 
-  return pgknex("blueprints").insert({
+  return pgknex.from("blueprints").insert({
     name,
     version,
     author,
@@ -80,7 +80,7 @@ export const UpdateBlueprintById = (
     );
   }
 
-  return pgknex("blueprints").where("id", id).update(updateData).returning("*");
+  return pgknex.from("blueprints").where("id", id).update(updateData).returning("*");
 };
 
 export const DeleteBlueprintById = (
@@ -95,5 +95,5 @@ export const DeleteBlueprintById = (
     );
   }
 
-  return pgknex("blueprints").where("id", id).del().returning("*");
+  return pgknex.from("blueprints").where("id", id).del().returning("*");
 };
