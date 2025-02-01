@@ -29,10 +29,15 @@ export default async function blueprintsController(fastify: FastifyInstance) {
   // GET /api/v1/blueprint:id
   fastify.get("/:id", async (request, reply: FastifyReply) => {
     try {
-      const blueprints = await GetBlueprintById(
+      const blueprint = await GetBlueprintById(
         request as FastifyRequest<{ Params: GetBlueprintByIdQuery }>,
       );
-      reply.send({ data: blueprints });
+
+      if (!blueprint) {
+        return reply.status(404).send({ error: "Blueprint not found" });
+      }
+
+      reply.send({ data: blueprint });
     } catch (e) {
       const error = e as Error;
       handleControllerError(error, reply, "getBlueprintController");
@@ -42,10 +47,10 @@ export default async function blueprintsController(fastify: FastifyInstance) {
   // POST /api/v1/blueprint
   fastify.post("/", async (request, reply: FastifyReply) => {
     try {
-      const blueprints = await CreateBlueprint(
+      await CreateBlueprint(
         request as FastifyRequest<{ Body: Blueprint }>,
       );
-      reply.send({ data: blueprints });
+      reply.send({ data: request.body });
     } catch (e) {
       const error = e as Error;
       handleControllerError(error, reply, "createBlueprintsController");
@@ -55,12 +60,17 @@ export default async function blueprintsController(fastify: FastifyInstance) {
   // PUT /api/v1/blueprint:id
   fastify.put("/:id", async (request, reply: FastifyReply) => {
     try {
-      const blueprint = await UpdateBlueprintById(
+      const [blueprint] = await UpdateBlueprintById(
         request as FastifyRequest<{
           Params: GetBlueprintByIdQuery;
           Body: Partial<Blueprint>;
         }>,
       );
+
+      if (!blueprint) {
+        return reply.status(404).send({ error: "Blueprint not found" });
+      }
+
       reply.send({ data: blueprint });
     } catch (e) {
       const error = e as Error;
@@ -71,12 +81,17 @@ export default async function blueprintsController(fastify: FastifyInstance) {
   // DELETE /api/v1/blueprint:id
   fastify.delete("/:id", async (request, reply: FastifyReply) => {
     try {
-      const blueprint = await DeleteBlueprintById(
+      const [blueprint] = await DeleteBlueprintById(
         request as FastifyRequest<{
           Params: GetBlueprintByIdQuery;
           Body: Partial<Blueprint>;
         }>,
       );
+
+      if (!blueprint) {
+        return reply.status(404).send({ error: "Blueprint not found" });
+      }
+
       reply.send({ data: blueprint });
     } catch (e) {
       const error = e as Error;

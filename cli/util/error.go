@@ -14,8 +14,12 @@ func HandleError(resp *http.Response) {
 		}
 	}(resp.Body)
 
+	if resp.StatusCode == http.StatusNotFound {
+		log.Fatalf("Failed http request: resource not found")
+	}
+
 	if resp.StatusCode != http.StatusOK {
 		body, _ := io.ReadAll(resp.Body)
-		log.Fatalf("Failed to create blueprint: %s", string(body))
+		log.Fatalf("Failed http request: %s", string(body))
 	}
 }

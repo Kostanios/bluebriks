@@ -106,10 +106,8 @@ describe("Blueprint Queries", () => {
     describe("UpdateBlueprintById", () => {
         it("should update blueprint by id", async () => {
             const request = { params: { id: "123" }, body: { name: "Updated Blueprint" } };
-            (pgknex.select as jest.Mock).mockReturnValue(pgknex);
-            (pgknex.where as jest.Mock).mockReturnValue(pgknex);
-            (pgknex.from as jest.Mock).mockReturnValue(pgknex);
             (pgknex.update as jest.Mock).mockReturnValue(pgknex);
+            (pgknex.returning as jest.Mock).mockReturnValue(pgknex);
 
             await UpdateBlueprintById(request as any);
             expect(pgknex.update).toHaveBeenCalledWith({ name: "Updated Blueprint" });

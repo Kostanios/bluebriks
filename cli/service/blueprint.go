@@ -8,6 +8,7 @@ import (
 	"log"
 	"net/http"
 	"os"
+	"strings"
 )
 
 func CreateBlueprint(file string) {
@@ -49,6 +50,11 @@ func GetBlueprintByID(id string) {
 	}
 
 	util.HandleError(resp)
+
+	trimmedBody := strings.TrimSpace(string(body))
+	if trimmedBody == "{}" {
+		log.Fatalf("Error: Received empty blueprint data")
+	}
 
 	fmt.Println("Blueprint Details:", string(body))
 
