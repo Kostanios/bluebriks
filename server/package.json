@@ -1,6 +1,9 @@
 {
   "name": "fastify-typescript-starter",
-  "version": "2.0.0",
+  "engines": {
+    "node": "^20.18.2"
+  },
+  "version": "2.0.3",
   "description": "Fastify TypeScript starter repository",
   "scripts": {
     "watch": "tsc --watch --preserveWatchOutput --pretty",

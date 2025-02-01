@@ -5,7 +5,6 @@ export const handleControllerError = (
   reply: FastifyReply,
   controllerName: string,
 ) => {
-  console.error(error);
   const message = error.message || "Internal Server Error";
   const log = `CONTROLLER ${controllerName} ERROR: ${message}`;
   console.error(log);

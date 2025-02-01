@@ -13,6 +13,8 @@ This is a Fastify server project set up with TypeScript. It provides a fast, rel
 
 ## Installation
 
+Node version ```20.18.2``` or higher
+
 1. Install dependencies:
 
     ```sh

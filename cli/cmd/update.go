@@ -32,10 +32,7 @@ Example:
 }
 
 func init() {
-	// Add the update command to the root command
 	rootCmd.AddCommand(updateCmd)
-
-	// Define the flags for the update command
 	updateCmd.Flags().StringP("id", "i", "", "ID of the blueprint to update")
 	updateCmd.Flags().StringP("file", "f", "", "Path to the updated JSON file for the blueprint")
 }

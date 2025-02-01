@@ -4,6 +4,8 @@ This is a CLI tool for managing blueprints using the Cobra library. You can crea
 
 ## Installation
 
+go version ```1.23.3```
+
 1. Install the necessary dependencies:
     ```sh
     go mod tidy
@@ -15,7 +17,7 @@ This is a CLI tool for managing blueprints using the Cobra library. You can crea
     FASTIFY_PORT=3006
     ```
 
-3. Build the CLI tool:
+3. Build the CLI tool (also you have an option to use already compiled file:
     ```sh
     go build -o blueprint-cli
     ```

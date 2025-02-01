@@ -28,6 +28,5 @@ Example:
 
 func init() {
 	rootCmd.AddCommand(getCmd)
-
 	getCmd.Flags().StringP("id", "i", "", "ID of the Blueprint to retrieve")
 }
